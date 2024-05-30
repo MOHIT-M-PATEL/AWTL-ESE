@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cakeShopApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-controller="CakeController">
+    <header>
+        <h1>Cake Shop</h1>
+    </header>
+    <main>
+        <form name="orderForm" ng-submit="submitOrder()" novalidate>
+            <div class="form-group">
+                <label for="flavor">Cake Flavor:</label>
+                <select id="flavor" name="flavor" ng-model="order.flavor" required>
+                    <option value="">Select Flavor</option>
+                    <option value="vanilla">Vanilla</option>
+                    <option value="chocolate">Chocolate</option>
+                    <option value="strawberry">Strawberry</option>
+                </select>
+                <span ng-show="orderForm.flavor.$error.required && orderForm.flavor.$dirty" class="error">Flavor is required.</span>
+            </div>
+            <div class="form-group">
+                <label for="size">Cake Size:</label>
+                <input type="radio" id="small" name="size" ng-model="order.size" value="small" required> <label for="small">Small</label>
+                <input type="radio" id="medium" name="size" ng-model="order.size" value="medium" required> <label for="medium">Medium</label>
+                <input type="radio" id="large" name="size" ng-model="order.size" value="large" required> <label for="large">Large</label>
+                <span ng-show="orderForm.size.$error.required && orderForm.size.$dirty" class="error">Size is required.</span>
+            </div>
+            <button type="submit">Place Order</button>
+        </form>
+        <div ng-show="submitted">
+            <h2>Order Confirmation</h2>
+            <p>Your {{ order.size }} {{ order.flavor }} cake order has been placed.</p>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Interactive Quiz</h1>
+    </header>
+    <main>
+        <form id="quizForm" onsubmit="return checkAnswers()">
+            <div class="question">
+                <p>1. What is the capital of France?</p>
+                <label><input type="radio" name="q1" value="a"> London</label><br>
+                <label><input type="radio" name="q1" value="b"> Berlin</label><br>
+                <label><input type="radio" name="q1" value="c"> Paris</label><br>
+                <label><input type="radio" name="q1" value="d"> Madrid</label>
+            </div>
+            <div class="question">
+                <p>2. What is 2 + 2?</p>
+                <label><input type="radio" name="q2" value="a"> 3</label><br>
+                <label><input type="radio" name="q2" value="b"> 4</label><br>
+                <label><input type="radio" name="q2" value="c"> 5</label><br>
+                <label><input type="radio" name="q2" value="d"> 6</label>
+            </div>
+            <div class="question">
+                <p>3. What is the largest planet in our solar system?</p>
+                <label><input type="radio" name="q3" value="a"> Earth</label><br>
+                <label><input type="radio" name="q3" value="b"> Mars</label><br>
+                <label><input type="radio" name="q3" value="c"> Jupiter</label><br>
+                <label><input type="radio" name="q3" value="d"> Saturn</label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Interactive Quiz</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

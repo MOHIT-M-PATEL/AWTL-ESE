@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True or False Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>True or False Quiz</h1>
+    </header>
+    <main>
+        <form id="quizForm" onsubmit="return checkAnswers()">
+            <div class="question">
+                <p>1. The sun rises in the west.</p>
+                <label><input type="radio" name="q1" value="true"> True</label>
+                <label><input type="radio" name="q1" value="false"> False</label>
+            </div>
+            <div class="question">
+                <p>2. Water boils at 100 degrees Celsius.</p>
+                <label><input type="radio" name="q2" value="true"> True</label>
+                <label><input type="radio" name="q2" value="false"> False</label>
+            </div>
+            <div class="question">
+                <p>3. The Earth is flat.</p>
+                <label><input type="radio" name="q3" value="true"> True</label>
+                <label><input type="radio" name="q3" value="false"> False</label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>

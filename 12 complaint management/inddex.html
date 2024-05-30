@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="complaintApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Management Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-controller="ComplaintController">
+    <header>
+        <h1>Complaint Management Application</h1>
+    </header>
+    <main>
+        <form name="complaintForm" ng-submit="submitForm()" novalidate>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" ng-model="complaint.name" required>
+                <span ng-show="complaintForm.name.$error.required && complaintForm.name.$dirty" class="error">Name is required.</span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" ng-model="complaint.email" required>
+                <span ng-show="complaintForm.email.$error.required && complaintForm.email.$dirty" class="error">Email is required.</span>
+                <span ng-show="complaintForm.email.$error.email && complaintForm.email.$dirty" class="error">Invalid email format.</span>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" ng-model="complaint.subject" required>
+                <span ng-show="complaintForm.subject.$error.required && complaintForm.subject.$dirty" class="error">Subject is required.</span>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" ng-model="complaint.message" rows="4" required></textarea>
+                <span ng-show="complaintForm.message.$error.required && complaintForm.message.$dirty" class="error">Message is required.</span>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div ng-show="submitted">
+            <h2>Thank You!</h2>
+            <p>Your complaint has been submitted.</p>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

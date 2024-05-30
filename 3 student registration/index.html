@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Student Registration Form</h1>
+    </header>
+    <main>
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="studentName">Name:</label>
+                <input type="text" id="studentName" name="studentName" required>
+            </div>
+            <div class="form-group">
+                <label for="studentEmail">Email:</label>
+                <input type="email" id="studentEmail" name="studentEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="studentPhone">Phone Number:</label>
+                <input type="tel" id="studentPhone" name="studentPhone" pattern="[0-9]{10}" required>
+            </div>
+            <div class="form-group">
+                <label for="studentAge">Age:</label>
+                <input type="number" id="studentAge" name="studentAge" min="18" max="60" required>
+            </div>
+            <div class="form-group">
+                <label for="studentGender">Gender:</label>
+                <select id="studentGender" name="studentGender" required>
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="studentAddress">Address:</label>
+                <textarea id="studentAddress" name="studentAddress" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="studentCourse">Course:</label>
+                <input type="text" id="studentCourse" name="studentCourse" required>
+            </div>
+            <div class="form-group">
+                <label for="admissionDate">Admission Date:</label>
+                <input type="date" id="admissionDate" name="admissionDate" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>

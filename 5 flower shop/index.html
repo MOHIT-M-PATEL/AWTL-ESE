@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Flower Shop</h1>
+        <nav>
+            <ul>
+                <li><a href="#bouquets">Bouquets</a></li>
+                <li><a href="#combos">Combos</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="bouquets">
+            <h2>Our Bouquets</h2>
+            <div class="item">
+                <h3>Rose Bouquet</h3>
+                <img src="images/rose_bouquet.jpg" alt="Rose Bouquet">
+                <p>A beautiful bouquet of fresh red roses.</p>
+                <p>Price: $25</p>
+            </div>
+            <div class="item">
+                <h3>Lily Bouquet</h3>
+                <img src="images/lily_bouquet.jpg" alt="Lily Bouquet">
+                <p>An elegant bouquet of white lilies.</p>
+                <p>Price: $30</p>
+            </div>
+            <div class="item">
+                <h3>Mixed Flower Bouquet</h3>
+                <img src="images/mixed_bouquet.jpg" alt="Mixed Flower Bouquet">
+                <p>A vibrant mix of seasonal flowers.</p>
+                <p>Price: $35</p>
+            </div>
+        </section>
+        <section id="combos">
+            <h2>Our Combos</h2>
+            <div class="item">
+                <h3>Rose & Chocolate Combo</h3>
+                <img src="images/rose_chocolate_combo.jpg" alt="Rose and Chocolate Combo">
+                <p>A dozen roses with a box of chocolates.</p>
+                <p>Price: $40</p>
+            </div>
+            <div class="item">
+                <h3>Lily & Wine Combo</h3>
+                <img src="images/lily_wine_combo.jpg" alt="Lily and Wine Combo">
+                <p>White lilies paired with a bottle of wine.</p>
+                <p>Price: $50</p>
+            </div>
+            <div class="item">
+                <h3>Mixed Flowers & Teddy Bear Combo</h3>
+                <img src="images/mixed_teddy_combo.jpg" alt="Mixed Flowers and Teddy Bear Combo">
+                <p>A mix of flowers with a cute teddy bear.</p>
+                <p>Price: $45</p>
+            </div>
+        </section>
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div class="gallery-item">
+                <img src="images/gallery1.jpg" alt="Flower Shop">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery2.jpg" alt="Bouquet">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery3.jpg" alt="Flower Arrangement">
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form id="contactForm" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Flower Shop</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

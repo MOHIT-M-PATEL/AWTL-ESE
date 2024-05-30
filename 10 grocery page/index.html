@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="groceryApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-controller="GroceryController">
+    <header>
+        <h1>Grocery Application</h1>
+    </header>
+    <main>
+        <form ng-submit="addItem()" novalidate>
+            <div class="form-group">
+                <label for="name">Item Name:</label>
+                <input type="text" id="name" name="name" ng-model="newItem.name" required>
+                <span ng-show="form.name.$error.required && form.name.$dirty" class="error">Item name is required.</span>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" ng-model="newItem.quantity" min="1" required>
+                <span ng-show="form.quantity.$error.required && form.quantity.$dirty" class="error">Quantity is required.</span>
+                <span ng-show="form.quantity.$error.min" class="error">Quantity must be at least 1.</span>
+            </div>
+            <button type="submit">Add Item</button>
+        </form>
+        <ul>
+            <li ng-repeat="item in groceryList">
+                {{item.name}} - {{item.quantity}}
+            </li>
+        </ul>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

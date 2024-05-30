@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tourismApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-controller="TourismController">
+    <header>
+        <h1>Tourism Application</h1>
+    </header>
+    <main>
+        <form name="touristForm" ng-submit="submitForm()" novalidate>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" ng-model="tourist.name" required>
+                <span ng-show="touristForm.name.$error.required && touristForm.name.$dirty" class="error">Name is required.</span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" ng-model="tourist.email" required>
+                <span ng-show="touristForm.email.$error.required && touristForm.email.$dirty" class="error">Email is required.</span>
+                <span ng-show="touristForm.email.$error.email && touristForm.email.$dirty" class="error">Invalid email format.</span>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" ng-model="tourist.age" min="18" required>
+                <span ng-show="touristForm.age.$error.required && touristForm.age.$dirty" class="error">Age is required.</span>
+                <span ng-show="touristForm.age.$error.min && touristForm.age.$dirty" class="error">Age must be at least 18.</span>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div ng-show="submitted">
+            <h2>Thank You!</h2>
+            <p>Your details have been submitted.</p>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
