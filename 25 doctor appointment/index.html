@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor's Appointment</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Doctor's Appointment Application</h1>
+    <form name="appointmentForm" ng-app="appointmentApp" ng-controller="appointmentCtrl" ng-submit="submitForm()">
+      
+      <label for="patientName">Patient Name:</label>
+      <input type="text" id="patientName" name="patientName" ng-model="formData.patientName" required>
+
+      <label for="appointmentDate">Appointment Date:</label>
+      <input type="date" id="appointmentDate" name="appointmentDate" ng-model="formData.appointmentDate" required>
+
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="tel" id="phoneNumber" name="phoneNumber" ng-model="formData.phoneNumber" required>
+
+      <button type="submit">Book Appointment</button>
+    </form>
+    <div ng-show="submitted">
+      <h2>Appointment Details</h2>
+      <p>Patient Name: {{ formData.patientName }}</p>
+      <p>Appointment Date: {{ formData.appointmentDate }}</p>
+      <p>Phone Number: {{ formData.phoneNumber }}</p>
+    </div>
+  </div>
+  
+</body>
+</html>
