@@ -1,95 +1,63 @@
-// Import required modules
-const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
-// Create connection to MySQL database
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'mysqlroot@1234567',
-  database: 'eseawtl'
+// Create MySQL connection
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'mysqlroot@1234567',
+    database: 'node_crud' // Change this to your database name
 });
 
-// Connect to MySQL database
-db.connect((err) => {
-  if (err) {    
-    throw err;
-  }
-  console.log('MySQL connected...');
-});
-
-// Initialize Express app
-const app = express();
-
-// Middleware to parse JSON data
-app.use(express.json());
-
-// Create a new course
-app.post('/courses', (req, res) => {
-  const { name, description, instructor, duration } = req.body;
-  const newCourse = { name, description, instructor, duration };
-  const sql = 'INSERT INTO courses SET ?';
-  db.query(sql, newCourse, (err, result) => {
-    if (err) throw err;
-    res.status(201).send('Course created successfully');
-  });
-});
-
-// Get all courses
-app.get('/courses', (req, res) => {
-  const sql = 'SELECT * FROM courses';
-  db.query(sql, (err, results) => {
-    if (err) throw err;
-    res.json(results);
-  });
-});
-
-// Get a single course by ID
-app.get('/courses/:id', (req, res) => {
-  const { id } = req.params;
-  const sql = 'SELECT * FROM courses WHERE id = ?';
-  db.query(sql, id, (err, result) => {
-    if (err) throw err;
-    if (result.length > 0) {
-      res.json(result[0]);
-    } else {
-      res.status(404).send('Course not found');
+// Connect to MySQL
+connection.connect((err) => {
+    if (err) {
+        console.error('Error connecting to MySQL:', err);
+        return;
     }
-  });
+    console.log('Connected to MySQL database');
 });
 
-// Update a course by ID
-app.put('/courses/:id', (req, res) => {
-  const { id } = req.params;
-  const { name, description, instructor, duration } = req.body;
-  const updatedCourse = { name, description, instructor, duration };
-  const sql = 'UPDATE courses SET ? WHERE id = ?';
-  db.query(sql, [updatedCourse, id], (err, result) => {
-    if (err) throw err;
-    if (result.affectedRows > 0) {
-      res.send('Course updated successfully');
-    } else {
-      res.status(404).send('Course not found');
-    }
-  });
-});
+// CREATE operation
+const createUser = (name, email) => {
+    const sql = 'INSERT INTO users (name, email) VALUES (?, ?)';
+    connection.query(sql, [name, email], (err, result) => {
+        if (err) throw err;
+        console.log('User added successfully:', result);
+    });
+};
 
-// Delete a course by ID
-app.delete('/courses/:id', (req, res) => {
-  const { id } = req.params;
-  const sql = 'DELETE FROM courses WHERE id = ?';
-  db.query(sql, id, (err, result) => {
-    if (err) throw err;
-    if (result.affectedRows > 0) {
-      res.send('Course deleted successfully');
-    } else {
-      res.status(404).send('Course not found');
-    }
-  });
-});
+// READ operation
+const getUsers = () => {
+    const sql = 'SELECT * FROM users';
+    connection.query(sql, (err, results) => {
+        if (err) throw err;
+        console.log('Users:', results);
+    });
+};
 
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// UPDATE operation
+const updateUser = (id, name, email) => {
+    const sql = 'UPDATE users SET name = ?, email = ? WHERE id = ?';
+    connection.query(sql, [name, email, id], (err, result) => {
+        if (err) throw err;
+        console.log('User updated successfully:', result);
+    });
+};
+
+// DELETE operation
+const deleteUser = (id) => {
+    const sql = 'DELETE FROM users WHERE id = ?';
+    connection.query(sql, [id], (err, result) => {
+        if (err) throw err;
+        console.log('User deleted successfully:', result);
+    });
+};
+
+// Example usage
+createUser('John Doe', 'john@example.com');
+getUsers();
+updateUser(1, 'Jane Doe', 'jane@example.com');
+deleteUser(1);
+
+// Close the MySQL connection
+connection.end();
